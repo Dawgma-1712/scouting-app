@@ -1,14 +1,598 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TeleopFragment">
+    tools:context=".AutoFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="TELEOP" />
 
-</FrameLayout>
+
+    <TextView
+        android:id="@+id/upperPortTeleopLabel"
+        android:layout_width="78dp"
+        android:layout_height="46dp"
+        android:text="Upper"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.176" />
+
+    <Button
+        android:id="@+id/upperPortTeleopMissedDecrease"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="-"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.638"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.315" />
+
+    <Button
+        android:id="@+id/upperPortTeleopScoredIncrease"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="+"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.287"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.315" />
+
+    <TextView
+        android:id="@+id/upperPortTeleopMissed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.323" />
+
+    <TextView
+        android:id="@+id/lowerPortTeleopLabel"
+        android:layout_width="66dp"
+        android:layout_height="34dp"
+        android:text="Lower"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.429" />
+
+    <CheckBox
+        android:id="@+id/trenchCheckBox"
+        android:layout_width="135dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border"
+        android:button="@null"
+
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:text="Trench"
+        app:layout_constraintEnd_toEndOf="@+id/targetZoneCheckBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/targetZoneCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/targetZoneCheckBox" />
+
+    <Button
+        android:id="@+id/lowerPortTeleopMissedDecrease"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="-"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.657"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.547" />
+
+    <CheckBox
+        android:id="@+id/moveAlongBarCheckBox"
+        android:layout_width="168dp"
+        android:layout_height="50dp"
+        android:background="@drawable/border"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:text="Move Along Bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/balancedCheckBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/balancedCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/balancedCheckBox"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <CheckBox
+        android:id="@+id/parkCheckBox"
+        android:layout_width="168dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/border"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:text="Park"
+
+        app:layout_constraintEnd_toEndOf="@+id/endGameTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/endGameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/endGameTextView" />
+
+    <Button
+        android:id="@+id/lowerPortTeleopScoredDecrease"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="-"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.547" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="168dp"
+        android:layout_height="44dp"
+        android:background="@drawable/border"
+        android:stretchColumns="1"
+        app:layout_constraintEnd_toEndOf="@+id/parkCheckBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/parkCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/parkCheckBox">
+
+        <TableRow>
+
+            <CheckBox
+                android:id="@+id/hangFailedCheckBox"
+                android:layout_width="84dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/border"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:text="Hang Failed" />
+
+            <CheckBox
+                android:id="@+id/hangScoredCheckBox"
+                android:layout_width="84dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/border"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:text="Hang Scored" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Missed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.814"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.464" />
+
+    <CheckBox
+        android:id="@+id/positionCheckBox"
+        android:layout_width="135dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border"
+
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:text="Position"
+        app:layout_constraintEnd_toEndOf="@+id/rotationCheckBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rotationCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/rotationCheckBox" />
+
+    <CheckBox
+        android:id="@+id/botDeadCheckBox"
+        android:layout_width="168dp"
+        android:layout_height="50dp"
+        android:background="@drawable/border"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:text="Bot Dead"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/underTrenchCheckBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/underTrenchCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/underTrenchCheckBox"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/endGameTextView"
+        android:layout_width="168dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border"
+        android:text="Endgame"
+        android:textSize="20dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.644" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scored"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.464" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="135dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border"
+
+        android:text="Control Panel"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.644" />
+
+    <CheckBox
+        android:id="@+id/rotationCheckBox"
+        android:layout_width="135dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border"
+
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:text="Rotation"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <CheckBox
+        android:id="@+id/targetZoneCheckBox"
+        android:layout_width="135dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:text="Target Zone"
+
+        app:layout_constraintEnd_toEndOf="@+id/shotFromTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/shotFromTextView"
+        app:layout_constraintTop_toBottomOf="@+id/shotFromTextView" />
+
+    <CheckBox
+        android:id="@+id/farZoneCheckBox"
+        android:layout_width="135dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:text="Far Zone"
+        app:layout_constraintEnd_toEndOf="@+id/neutralZoneCheckBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/neutralZoneCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/neutralZoneCheckBox" />
+
+    <Button
+        android:id="@+id/lowerPortTeleopMissedIncrease"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="+"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.961"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.547" />
+
+    <CheckBox
+        android:id="@+id/balancedCheckBox"
+        android:layout_width="168dp"
+        android:layout_height="47dp"
+        android:background="@drawable/border"
+
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:text="Balanced"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/lowerPortTeleopScored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.199"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.541" />
+
+    <Button
+        android:id="@+id/lowerPortTeleopScoredIncrease"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="+"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.547" />
+
+    <CheckBox
+        android:id="@+id/neutralZoneCheckBox"
+        android:layout_width="135dp"
+        android:layout_height="43dp"
+        android:background="@drawable/border"
+
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:text="Neutral Zone"
+        app:layout_constraintEnd_toEndOf="@+id/trenchCheckBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/trenchCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/trenchCheckBox" />
+
+    <CheckBox
+        android:id="@+id/underTrenchCheckBox"
+        android:layout_width="168dp"
+        android:layout_height="50dp"
+        android:background="@drawable/border"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:text="Goes Under Trench"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/moveAlongBarCheckBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/moveAlongBarCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/moveAlongBarCheckBox"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/shotFromTextView"
+        android:layout_width="135dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="484dp"
+        android:background="@drawable/border"
+        android:text="Shot From"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lowerPortTeleopMissed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.771"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.541" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Missed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.242" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scored"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.242" />
+
+    <Button
+        android:id="@+id/upperPortTeleopMissedIncrease"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="+"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.314" />
+
+    <Button
+        android:id="@+id/upperPortTeleopScoredDecrease"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="-"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.314" />
+
+    <TextView
+        android:id="@+id/upperPortTeleopScored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.323" />
+
+    <TableLayout
+        android:layout_width="163dp"
+        android:layout_height="102dp"
+        android:stretchColumns="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025">
+
+        <TableRow>
+
+            <CheckBox
+                android:id="@+id/groundPickupCheckbox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:text="Pick up from ground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.158"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.06" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <CheckBox
+                android:id="@+id/HPPickupCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:text="Pick up from HP"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.158"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.06" />
+
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="263dp"
+        android:layout_height="102dp"
+        android:stretchColumns="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.925"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024">
+
+        <TableRow>
+
+            <CheckBox
+                android:id="@+id/playedDefenseCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:text="played defense"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.158"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.06" />
+
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <CheckBox
+                android:id="@+id/defendedOnCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:text="Defended on"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.158"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.06" />
+
+            <EditText
+                android:id="@+id/defendedOnTeamNum"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Team #"
+                android:inputType="text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.063"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.001" />
+
+
+        </TableRow>
+    </TableLayout><![CDATA[
+
+
+    app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.72" />
+
+
+]]>
+</androidx.constraintlayout.widget.ConstraintLayout>

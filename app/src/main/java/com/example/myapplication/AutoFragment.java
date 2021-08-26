@@ -22,24 +22,27 @@ public class AutoFragment extends Fragment implements View.OnClickListener {
     private TextView outerPortAutoMissed;
     private TextView outerPortAutoScored;
 
-    //initialize inner port buttons
-    private Button innerPortAutoScoredIncrease;
-    private Button innerPortAutoScoredDecrease;
-    private Button innerPortAutoMissedIncrease;
-    private Button innerPortAutoMissedDecrease;
+    //initialize lower port text views
+    private TextView lowerPortAutoMissed;
+    private TextView lowerPortAutoScored;
 
-    //initialize outer port buttons
-    private Button outerPortAutoScoredIncrease;
-    private Button outerPortAutoScoredDecrease;
-    private Button outerPortAutoMissedIncrease;
-    private Button outerPortAutoMissedDecrease;
+    //Initialize collected power cell text view
+    private TextView collectedPC;
+
+
 
 
     //counter variables
-    private int innerPortAutoScoredCounter;
-    private int innerPortAutoMissedCounter;
-    private int outerPortAutoScoredCounter;
-    private int outerPortAutoMissedCounter;
+    private int innerPortAutoScoredCounter = 0;
+    private int innerPortAutoMissedCounter = 0;
+
+    private int outerPortAutoScoredCounter = 0;
+    private int outerPortAutoMissedCounter = 0;
+
+    private int lowerPortAutoScoredCounter = 0;
+    private int lowerPortAutoMissedCounter = 0;
+
+    private int collectedPCCounter = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,35 +56,39 @@ public class AutoFragment extends Fragment implements View.OnClickListener {
         outerPortAutoScored = (TextView) view.findViewById(R.id.outerPortAutoScored);
         outerPortAutoMissed = (TextView) view.findViewById(R.id.outerPortAutoMissed);
 
-        //Define Buttons
-        //inner port buttons
-        innerPortAutoScoredIncrease = (Button) view.findViewById(R.id.innerPortAutoScoredIncrease);
-        innerPortAutoScoredIncrease.setOnClickListener(this);
-        innerPortAutoScoredDecrease = (Button) view.findViewById(R.id.innerPortAutoScoredDecrease);
-        innerPortAutoScoredDecrease.setOnClickListener(this);
+        lowerPortAutoScored = (TextView) view.findViewById(R.id.lowerPortAutoScored);
+        lowerPortAutoMissed = (TextView) view.findViewById(R.id.lowerPortAutoMissed);
 
-        innerPortAutoMissedIncrease = (Button) view.findViewById(R.id.innerPortAutoMissedIncrease);
-        innerPortAutoMissedIncrease.setOnClickListener(this);
-        innerPortAutoMissedDecrease = (Button) view.findViewById(R.id.innerPortAutoMissedDecrease);
-        innerPortAutoMissedDecrease.setOnClickListener(this);
+        collectedPC = (TextView) view.findViewById(R.id.collectedPC);
+
+        //Define Buttons
+
+        //inner port buttons
+        view.findViewById(R.id.innerPortAutoScoredIncrease).setOnClickListener(this);
+        view.findViewById(R.id.innerPortAutoScoredDecrease).setOnClickListener(this);
+
+        view.findViewById(R.id.innerPortAutoMissedIncrease).setOnClickListener(this);
+        view.findViewById(R.id.innerPortAutoMissedDecrease).setOnClickListener(this);
 
         //outer port buttons
-        outerPortAutoScoredIncrease = (Button) view.findViewById(R.id.outerPortAutoScoredIncrease);
-        outerPortAutoScoredIncrease.setOnClickListener(this);
-        outerPortAutoScoredDecrease = (Button) view.findViewById(R.id.outerPortAutoScoredDecrease);
-        outerPortAutoScoredDecrease.setOnClickListener(this);
+        view.findViewById(R.id.outerPortAutoScoredIncrease).setOnClickListener(this);
+        view.findViewById(R.id.outerPortAutoScoredDecrease).setOnClickListener(this);
 
-        outerPortAutoMissedIncrease = (Button) view.findViewById(R.id.outerPortAutoMissedIncrease);
-        outerPortAutoMissedIncrease.setOnClickListener(this);
-        outerPortAutoMissedDecrease = (Button) view.findViewById(R.id.outerPortAutoMissedDecrease);
-        outerPortAutoMissedDecrease.setOnClickListener(this);
+        view.findViewById(R.id.outerPortAutoMissedIncrease).setOnClickListener(this);
+        view.findViewById(R.id.outerPortAutoMissedDecrease).setOnClickListener(this);
+
+        //lower port buttons
+        view.findViewById(R.id.lowerPortAutoScoredIncrease).setOnClickListener(this);
+        view.findViewById(R.id.lowerPortAutoScoredDecrease).setOnClickListener(this);
+
+        view.findViewById(R.id.lowerPortAutoMissedIncrease).setOnClickListener(this);
+        view.findViewById(R.id.lowerPortAutoMissedDecrease).setOnClickListener(this);
+
+        //collected power cells buttons
+        view.findViewById(R.id.collectedPCDecrease).setOnClickListener(this);
+        view.findViewById(R.id.collectedPCIncrease).setOnClickListener(this);
 
 
-        //Define other variables
-        innerPortAutoScoredCounter = 0;
-        innerPortAutoMissedCounter = 0;
-        outerPortAutoScoredCounter = 0;
-        outerPortAutoMissedCounter = 0;
 
         return view;
     }
@@ -127,6 +134,35 @@ public class AutoFragment extends Fragment implements View.OnClickListener {
             case R.id.outerPortAutoMissedDecrease:
                 outerPortAutoMissedCounter--;
                 outerPortAutoMissed.setText(Integer.toString(outerPortAutoMissedCounter));
+                break;
+
+            case R.id.lowerPortAutoScoredIncrease:
+                lowerPortAutoScoredCounter++;
+                lowerPortAutoScored.setText(Integer.toString(lowerPortAutoScoredCounter));
+                break;
+
+            case R.id.lowerPortAutoScoredDecrease:
+                lowerPortAutoScoredCounter--;
+                lowerPortAutoScored.setText(Integer.toString(lowerPortAutoScoredCounter));
+                break;
+
+            case R.id.lowerPortAutoMissedIncrease:
+                lowerPortAutoMissedCounter++;
+                lowerPortAutoMissed.setText(Integer.toString(lowerPortAutoMissedCounter));
+                break;
+
+            case R.id.lowerPortAutoMissedDecrease:
+                lowerPortAutoMissedCounter--;
+                lowerPortAutoMissed.setText(Integer.toString(lowerPortAutoMissedCounter));
+                break;
+
+            case R.id.collectedPCIncrease:
+                collectedPCCounter++;
+                collectedPC.setText(Integer.toString(collectedPCCounter));
+                break;
+            case R.id.collectedPCDecrease:
+                collectedPCCounter--;
+                collectedPC.setText(Integer.toString(collectedPCCounter));
                 break;
         }
 
