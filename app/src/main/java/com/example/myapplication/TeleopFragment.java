@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -71,6 +72,8 @@ public class TeleopFragment extends Fragment implements View.OnClickListener {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -152,5 +155,14 @@ public class TeleopFragment extends Fragment implements View.OnClickListener {
                 lowerPortTeleopMissed.setText(Integer.toString(lowerPortTeleopMissedCounter));
                 break;
         }
+    }
+
+    public void onResume() {
+        super.onResume();
+
+        upperPortTeleopScored.setText(Integer.toString(upperPortTeleopScoredCounter));
+        upperPortTeleopMissed.setText(Integer.toString(upperPortTeleopMissedCounter));
+        lowerPortTeleopScored.setText(Integer.toString(lowerPortTeleopScoredCounter));
+        lowerPortTeleopMissed.setText(Integer.toString(lowerPortTeleopMissedCounter));
     }
 }

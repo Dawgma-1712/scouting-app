@@ -31,7 +31,6 @@ public class AutoFragment extends Fragment implements View.OnClickListener {
 
 
 
-
     //counter variables
     private int innerPortAutoScoredCounter = 0;
     private int innerPortAutoMissedCounter = 0;
@@ -165,6 +164,31 @@ public class AutoFragment extends Fragment implements View.OnClickListener {
                 collectedPC.setText(Integer.toString(collectedPCCounter));
                 break;
         }
+
+    }
+
+    public int[] getData() {
+        int[] dataOut = new int[7];
+        dataOut[0] = innerPortAutoScoredCounter;
+        dataOut[1] = innerPortAutoMissedCounter;
+        dataOut[2] = outerPortAutoScoredCounter;
+        dataOut[3] = outerPortAutoMissedCounter;
+        dataOut[4] = lowerPortAutoScoredCounter;
+        dataOut[5] = lowerPortAutoMissedCounter;
+        dataOut[6] = collectedPCCounter;
+        return dataOut;
+    }
+
+    public void onResume() {
+        super.onResume();
+
+        innerPortAutoScored.setText(Integer.toString(innerPortAutoScoredCounter));
+        innerPortAutoMissed.setText(Integer.toString(innerPortAutoMissedCounter));
+        outerPortAutoScored.setText(Integer.toString(outerPortAutoScoredCounter));
+        outerPortAutoMissed.setText(Integer.toString(outerPortAutoMissedCounter));
+        lowerPortAutoScored.setText(Integer.toString(lowerPortAutoScoredCounter));
+        lowerPortAutoMissed.setText(Integer.toString(lowerPortAutoMissedCounter));
+        collectedPC.setText(Integer.toString(collectedPCCounter));
 
     }
 }

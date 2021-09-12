@@ -15,6 +15,9 @@ public class MatchScouting extends AppCompatActivity {
     //Declaring variables
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
+    public AutoFragment autoFragment = new AutoFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +30,10 @@ public class MatchScouting extends AppCompatActivity {
         //Configuring the tablayout element with the viewpager element
         tabLayout.setupWithViewPager(viewPager);
         VPAdapter vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        vpAdapter.addFragment(new AutoFragment(),"AUTO");
+        vpAdapter.addFragment(autoFragment,"AUTO");
         vpAdapter.addFragment(new TeleopFragment(),"TELEOP");
         vpAdapter.addFragment(new EndgameFragment(),"ENDGAME");
+        vpAdapter.addFragment(new SaveFragment(), "SAVE");
         viewPager.setAdapter(vpAdapter);
 
 
@@ -42,4 +46,6 @@ public class MatchScouting extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+
 }
