@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.service.autofill.FieldClassification;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +44,7 @@ public class AutoFragment extends Fragment implements View.OnClickListener {
     private int lowerPortAutoMissedCounter = 0;
 
     private int collectedPCCounter = 0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -87,8 +90,6 @@ public class AutoFragment extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.collectedPCDecrease).setOnClickListener(this);
         view.findViewById(R.id.collectedPCIncrease).setOnClickListener(this);
 
-
-
         return view;
     }
 
@@ -98,85 +99,87 @@ public class AutoFragment extends Fragment implements View.OnClickListener {
             case R.id.innerPortAutoScoredIncrease:
                 innerPortAutoScoredCounter++;
                 innerPortAutoScored.setText(Integer.toString(innerPortAutoScoredCounter));
+                MatchScouting.editMatchData(0, 0, MatchScouting.getButtonData()[0][0] + 1);
                 break;
 
             case R.id.innerPortAutoScoredDecrease:
                 innerPortAutoScoredCounter--;
                 innerPortAutoScored.setText(Integer.toString(innerPortAutoScoredCounter));
+                MatchScouting.editMatchData(0, 0, MatchScouting.getButtonData()[0][0] - 1);
                 break;
 
             case R.id.innerPortAutoMissedIncrease:
                 innerPortAutoMissedCounter++;
                 innerPortAutoMissed.setText(Integer.toString(innerPortAutoMissedCounter));
+                MatchScouting.editMatchData(0, 1, MatchScouting.getButtonData()[0][1] + 1);
                 break;
 
             case R.id.innerPortAutoMissedDecrease:
                 innerPortAutoMissedCounter--;
                 innerPortAutoMissed.setText(Integer.toString(innerPortAutoMissedCounter));
+                MatchScouting.editMatchData(0, 1, MatchScouting.getButtonData()[0][1] - 1);
                 break;
 
             case R.id.outerPortAutoScoredIncrease:
                 outerPortAutoScoredCounter++;
                 outerPortAutoScored.setText(Integer.toString(outerPortAutoScoredCounter));
+                MatchScouting.editMatchData(0, 2, MatchScouting.getButtonData()[0][2] + 1);
                 break;
 
             case R.id.outerPortAutoScoredDecrease:
                 outerPortAutoScoredCounter--;
                 outerPortAutoScored.setText(Integer.toString(outerPortAutoScoredCounter));
+                MatchScouting.editMatchData(0, 2, MatchScouting.getButtonData()[0][2] - 1);
                 break;
 
             case R.id.outerPortAutoMissedIncrease:
                 outerPortAutoMissedCounter++;
                 outerPortAutoMissed.setText(Integer.toString(outerPortAutoMissedCounter));
+                MatchScouting.editMatchData(0, 3, MatchScouting.getButtonData()[0][3] + 1);
                 break;
 
             case R.id.outerPortAutoMissedDecrease:
                 outerPortAutoMissedCounter--;
                 outerPortAutoMissed.setText(Integer.toString(outerPortAutoMissedCounter));
+                MatchScouting.editMatchData(0, 3, MatchScouting.getButtonData()[0][3] - 1);
                 break;
 
             case R.id.lowerPortAutoScoredIncrease:
                 lowerPortAutoScoredCounter++;
                 lowerPortAutoScored.setText(Integer.toString(lowerPortAutoScoredCounter));
+                MatchScouting.editMatchData(0, 4, MatchScouting.getButtonData()[0][4] + 1);
                 break;
 
             case R.id.lowerPortAutoScoredDecrease:
                 lowerPortAutoScoredCounter--;
                 lowerPortAutoScored.setText(Integer.toString(lowerPortAutoScoredCounter));
+                MatchScouting.editMatchData(0, 4, MatchScouting.getButtonData()[0][4] - 1);
                 break;
 
             case R.id.lowerPortAutoMissedIncrease:
                 lowerPortAutoMissedCounter++;
                 lowerPortAutoMissed.setText(Integer.toString(lowerPortAutoMissedCounter));
+                MatchScouting.editMatchData(0, 5, MatchScouting.getButtonData()[0][5] + 1);
                 break;
 
             case R.id.lowerPortAutoMissedDecrease:
                 lowerPortAutoMissedCounter--;
                 lowerPortAutoMissed.setText(Integer.toString(lowerPortAutoMissedCounter));
+                MatchScouting.editMatchData(0, 5, MatchScouting.getButtonData()[0][5] - 1);
                 break;
 
             case R.id.collectedPCIncrease:
                 collectedPCCounter++;
                 collectedPC.setText(Integer.toString(collectedPCCounter));
+                MatchScouting.editMatchData(0, 6, MatchScouting.getButtonData()[0][6] + 1);
                 break;
             case R.id.collectedPCDecrease:
                 collectedPCCounter--;
                 collectedPC.setText(Integer.toString(collectedPCCounter));
+                MatchScouting.editMatchData(0, 6, MatchScouting.getButtonData()[0][6] - 1);
                 break;
         }
 
-    }
-
-    public int[] getData() {
-        int[] dataOut = new int[7];
-        dataOut[0] = innerPortAutoScoredCounter;
-        dataOut[1] = innerPortAutoMissedCounter;
-        dataOut[2] = outerPortAutoScoredCounter;
-        dataOut[3] = outerPortAutoMissedCounter;
-        dataOut[4] = lowerPortAutoScoredCounter;
-        dataOut[5] = lowerPortAutoMissedCounter;
-        dataOut[6] = collectedPCCounter;
-        return dataOut;
     }
 
     public void onResume() {
@@ -190,5 +193,9 @@ public class AutoFragment extends Fragment implements View.OnClickListener {
         lowerPortAutoMissed.setText(Integer.toString(lowerPortAutoMissedCounter));
         collectedPC.setText(Integer.toString(collectedPCCounter));
 
+    }
+
+    public void onCheckBoxClicked(View view) {
+        MatchScouting.onCheckBoxClicked(view);
     }
 }

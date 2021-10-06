@@ -30,10 +30,10 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.638"
+        app:layout_constraintHorizontal_bias="0.632"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.315" />
+        app:layout_constraintVertical_bias="0.266" />
 
     <Button
         android:id="@+id/upperPortTeleopScoredIncrease"
@@ -46,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.287"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.315" />
+        app:layout_constraintVertical_bias="0.266" />
 
     <TextView
         android:id="@+id/upperPortTeleopMissed"
@@ -68,24 +68,29 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.429" />
+        app:layout_constraintVertical_bias="0.342" />
 
     <CheckBox
         android:id="@+id/trenchCheckBox"
-        android:layout_width="135dp"
-        android:layout_height="43dp"
+        android:layout_width="146dp"
+        android:layout_height="48dp"
         android:background="@drawable/border"
         android:button="@null"
 
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:minWidth="48dp"
+
+        android:minHeight="48dp"
+        android:onClick="onCheckBoxClicked"
         android:text="Trench"
         app:layout_constraintEnd_toEndOf="@+id/targetZoneCheckBox"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/targetZoneCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/targetZoneCheckBox" />
+
 
     <Button
         android:id="@+id/lowerPortTeleopMissedDecrease"
@@ -95,18 +100,21 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.657"
+        app:layout_constraintHorizontal_bias="0.632"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintVertical_bias="0.42" />
 
     <CheckBox
         android:id="@+id/moveAlongBarCheckBox"
-        android:layout_width="168dp"
-        android:layout_height="50dp"
+        android:layout_width="165dp"
+        android:layout_height="48dp"
         android:background="@drawable/border"
         android:button="@null"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onCheckBoxClicked"
         android:text="Move Along Bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/balancedCheckBox"
@@ -115,16 +123,21 @@
         app:layout_constraintTop_toBottomOf="@+id/balancedCheckBox"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <CheckBox
         android:id="@+id/parkCheckBox"
         android:layout_width="168dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginTop="1dp"
         android:background="@drawable/border"
         android:button="@null"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
-        android:text="Park"
+        android:minWidth="48dp"
 
+        android:minHeight="48dp"
+        android:onClick="onCheckBoxClicked"
+
+        android:text="Park"
         app:layout_constraintEnd_toEndOf="@+id/endGameTextView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/endGameTextView"
@@ -138,10 +151,10 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintHorizontal_bias="0.008"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintVertical_bias="0.42" />
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -164,7 +177,12 @@
                 android:background="@drawable/border"
                 android:button="@null"
                 android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
-                android:text="Hang Failed" />
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+
+                android:onClick="onCheckBoxClicked"
+                android:text="Hang Failed"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <CheckBox
                 android:id="@+id/hangScoredCheckBox"
@@ -174,7 +192,12 @@
                 android:background="@drawable/border"
                 android:button="@null"
                 android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
-                android:text="Hang Scored" />
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+
+                android:onClick="onCheckBoxClicked"
+                android:text="Hang Scored"
+                tools:ignore="TouchTargetSizeCheck" />
         </TableRow>
     </TableLayout>
 
@@ -185,21 +208,25 @@
         android:text="Missed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.814"
+        app:layout_constraintHorizontal_bias="0.791"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.464" />
+        app:layout_constraintVertical_bias="0.355" />
 
     <CheckBox
         android:id="@+id/positionCheckBox"
         android:layout_width="135dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:background="@drawable/border"
 
         android:button="@null"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onCheckBoxClicked"
         android:text="Position"
         app:layout_constraintEnd_toEndOf="@+id/rotationCheckBox"
+
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rotationCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/rotationCheckBox" />
@@ -211,10 +238,14 @@
         android:background="@drawable/border"
         android:button="@null"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onCheckBoxClicked"
         android:text="Bot Dead"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/underTrenchCheckBox"
         app:layout_constraintHorizontal_bias="0.0"
+
         app:layout_constraintStart_toStartOf="@+id/underTrenchCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/underTrenchCheckBox"
         app:layout_constraintVertical_bias="0.0" />
@@ -229,10 +260,10 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.644" />
+        app:layout_constraintVertical_bias="0.505" />
 
     <TextView
         android:id="@+id/textView6"
@@ -241,10 +272,10 @@
         android:text="Scored"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.464" />
+        app:layout_constraintVertical_bias="0.355" />
 
     <TextView
         android:id="@+id/textView8"
@@ -256,32 +287,40 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.644" />
+        app:layout_constraintVertical_bias="0.828" />
 
     <CheckBox
         android:id="@+id/rotationCheckBox"
         android:layout_width="135dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:background="@drawable/border"
 
         android:button="@null"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onCheckBoxClicked"
         android:text="Rotation"
         app:layout_constraintEnd_toEndOf="@+id/textView8"
+
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <CheckBox
         android:id="@+id/targetZoneCheckBox"
-        android:layout_width="135dp"
-        android:layout_height="43dp"
+        android:layout_width="157dp"
+        android:layout_height="49dp"
         android:background="@drawable/border"
         android:button="@null"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:minWidth="48dp"
+
+        android:minHeight="48dp"
+        android:onClick="onCheckBoxClicked"
         android:text="Target Zone"
 
         app:layout_constraintEnd_toEndOf="@+id/shotFromTextView"
@@ -291,13 +330,17 @@
 
     <CheckBox
         android:id="@+id/farZoneCheckBox"
-        android:layout_width="135dp"
-        android:layout_height="43dp"
+        android:layout_width="144dp"
+        android:layout_height="48dp"
         android:background="@drawable/border"
         android:button="@null"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onCheckBoxClicked"
         android:text="Far Zone"
         app:layout_constraintEnd_toEndOf="@+id/neutralZoneCheckBox"
+
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/neutralZoneCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/neutralZoneCheckBox" />
@@ -310,23 +353,27 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.961"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintVertical_bias="0.42" />
 
     <CheckBox
         android:id="@+id/balancedCheckBox"
-        android:layout_width="168dp"
-        android:layout_height="47dp"
+        android:layout_width="166dp"
+        android:layout_height="48dp"
         android:background="@drawable/border"
 
         android:button="@null"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onCheckBoxClicked"
         android:text="Balanced"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tableLayout"
         app:layout_constraintHorizontal_bias="0.0"
+
         app:layout_constraintStart_toStartOf="@+id/tableLayout"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout"
         app:layout_constraintVertical_bias="0.0" />
@@ -338,10 +385,10 @@
         android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.199"
+        app:layout_constraintHorizontal_bias="0.198"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.541" />
+        app:layout_constraintVertical_bias="0.428" />
 
     <Button
         android:id="@+id/lowerPortTeleopScoredIncrease"
@@ -351,21 +398,25 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintHorizontal_bias="0.287"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintVertical_bias="0.42" />
 
     <CheckBox
         android:id="@+id/neutralZoneCheckBox"
-        android:layout_width="135dp"
-        android:layout_height="43dp"
+        android:layout_width="146dp"
+        android:layout_height="48dp"
         android:background="@drawable/border"
 
         android:button="@null"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onCheckBoxClicked"
         android:text="Neutral Zone"
         app:layout_constraintEnd_toEndOf="@+id/trenchCheckBox"
+
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/trenchCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/trenchCheckBox" />
@@ -377,10 +428,14 @@
         android:background="@drawable/border"
         android:button="@null"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onCheckBoxClicked"
         android:text="Goes Under Trench"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/moveAlongBarCheckBox"
         app:layout_constraintHorizontal_bias="0.0"
+
         app:layout_constraintStart_toStartOf="@+id/moveAlongBarCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/moveAlongBarCheckBox"
         app:layout_constraintVertical_bias="0.0" />
@@ -388,13 +443,13 @@
     <TextView
         android:id="@+id/shotFromTextView"
         android:layout_width="135dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="484dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="348dp"
         android:background="@drawable/border"
         android:text="Shot From"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -405,10 +460,10 @@
         android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.771"
+        app:layout_constraintHorizontal_bias="0.756"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.541" />
+        app:layout_constraintVertical_bias="0.428" />
 
     <TextView
         android:id="@+id/textView"
@@ -417,10 +472,10 @@
         android:text="Missed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintHorizontal_bias="0.791"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242" />
+        app:layout_constraintVertical_bias="0.213" />
 
     <TextView
         android:id="@+id/textView2"
@@ -432,7 +487,7 @@
         app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242" />
+        app:layout_constraintVertical_bias="0.214" />
 
     <Button
         android:id="@+id/upperPortTeleopMissedIncrease"
@@ -445,7 +500,7 @@
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314" />
+        app:layout_constraintVertical_bias="0.266" />
 
     <Button
         android:id="@+id/upperPortTeleopScoredDecrease"
@@ -458,7 +513,7 @@
         app:layout_constraintHorizontal_bias="0.008"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314" />
+        app:layout_constraintVertical_bias="0.266" />
 
     <TextView
         android:id="@+id/upperPortTeleopScored"
@@ -467,10 +522,10 @@
         android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintHorizontal_bias="0.198"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.323" />
+        app:layout_constraintVertical_bias="0.282" />
 
     <TableLayout
         android:layout_width="163dp"
@@ -491,10 +546,14 @@
                 android:layout_height="match_parent"
                 android:button="@null"
                 android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:onClick="onCheckBoxClicked"
                 android:text="Pick up from ground"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.158"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.06" />
@@ -510,10 +569,14 @@
                 android:layout_height="match_parent"
                 android:button="@null"
                 android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:onClick="onCheckBoxClicked"
                 android:text="Pick up from HP"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.158"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.06" />
@@ -522,8 +585,8 @@
     </TableLayout>
 
     <TableLayout
-        android:layout_width="263dp"
-        android:layout_height="102dp"
+        android:layout_width="217dp"
+        android:layout_height="99dp"
         android:stretchColumns="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -540,10 +603,14 @@
                 android:layout_height="match_parent"
                 android:button="@null"
                 android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:onClick="onCheckBoxClicked"
                 android:text="played defense"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.158"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.06" />
@@ -560,17 +627,21 @@
                 android:layout_height="match_parent"
                 android:button="@null"
                 android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:onClick="onCheckBoxClicked"
                 android:text="Defended on"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.158"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.06" />
 
             <EditText
                 android:id="@+id/defendedOnTeamNum"
-                android:layout_width="match_parent"
+                android:layout_width="90dp"
                 android:layout_height="match_parent"
                 android:hint="Team #"
                 android:inputType="text"
