@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -33,7 +34,7 @@ public class MatchScouting extends AppCompatActivity {
     private static int matchNumber;
     private static int[][] buttonData;
     private static int[] checkBoxData;
-    private static int defendedOnByNumber;
+    private static String defendedOnByNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +54,11 @@ public class MatchScouting extends AppCompatActivity {
         vpAdapter.addFragment(new SaveFragment(), "SAVE");
         viewPager.setAdapter(vpAdapter);
 
-        teamNumber = 0;
         buttonData = new int[][]{
                 {0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0}
         };
         checkBoxData = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        defendedOnByNumber = 0;
 
     }
 
@@ -145,20 +144,30 @@ public class MatchScouting extends AppCompatActivity {
 
     public void saveMatchData(View view) {
         // Get text field values
-        teamNumber = Integer.parseInt(((EditText)findViewById(R.id.teamNum)).getText().toString());
-        matchNumber = Integer.parseInt(((EditText)findViewById(R.id.matchNum)).getText().toString());
-        defendedOnByNumber = Integer.parseInt(((EditText)findViewById(R.id.defendedOnTeamNum)).getText().toString());
+        teamNumber = 0;
+        matchNumber = 0;
+        defendedOnByNumber = "";
+        if (((EditText)findViewById(R.id.teamNum)).getText().toString() != null && ((EditText)findViewById(R.id.matchNum)).getText().toString() != null) {
+            teamNumber = Integer.parseInt(((EditText)findViewById(R.id.teamNum)).getText().toString());
+            matchNumber = Integer.parseInt(((EditText)findViewById(R.id.matchNum)).getText().toString());
+        }
+        if (((EditText)findViewById(R.id.defendedOnTeamNum)).getText().toString() != null) {
+            defendedOnByNumber = ((EditText)findViewById(R.id.defendedOnTeamNum)).getText().toString();
+        }
+        Log.d("TEXTFIELD THING", "Value of defended on by, is " + ((EditText)findViewById(R.id.defendedOnTeamNum)).getText().toString());
 
         // Create and save file
-        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("application/csv");
-        String fileName = "match" + (new Integer(matchNumber)).toString() + "_team" + (new Integer(teamNumber)).toString() + ".csv";
-        intent.putExtra(Intent.EXTRA_TITLE, fileName);
+        if (teamNumber != 0 && matchNumber != 0) {
+            Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType("application/csv");
+            String fileName = "match" + (new Integer(matchNumber)).toString() + "_team" + (new Integer(teamNumber)).toString() + ".csv";
+            intent.putExtra(Intent.EXTRA_TITLE, fileName);
 
-        // TODO: Automatically direct user to correct save location
+            // TODO: Automatically direct user to correct save location
 
-        startActivityForResult(intent, CREATE_FILE);
+            startActivityForResult(intent, CREATE_FILE);
+        }
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
@@ -174,7 +183,7 @@ public class MatchScouting extends AppCompatActivity {
                 data += (new Integer(teamNumber)).toString() + "," + (new Integer(matchNumber)).toString() + ","
                         /* AUTO */ + (new Integer(buttonData[0][4])).toString() + "," + (new Integer(buttonData[0][5])).toString() + "," + (new Integer(buttonData[0][2])).toString() + "," + (new Integer(buttonData[0][3])).toString() + "," + (new Integer(buttonData[0][0])).toString() + "," + (new Integer(buttonData[0][1])).toString() + "," + (new Integer(buttonData[0][6])).toString() + ","
                         /* TELEOP */ + (new Integer(checkBoxData[0])).toString() + "," + (new Integer(checkBoxData[1])).toString() + ","
-                        /* DEFENSE */ + (new Integer(checkBoxData[2])).toString() + "," + (new Integer(checkBoxData[3])).toString() + "," + (new Integer(defendedOnByNumber)).toString() + ","
+                        /* DEFENSE */ + (new Integer(checkBoxData[2])).toString() + "," + (new Integer(checkBoxData[3])).toString() + "," + defendedOnByNumber + ","
                         /* POWER CELLS */ + (new Integer(buttonData[1][2])).toString() + "," + (new Integer(buttonData[1][3])).toString() + "," + (new Integer(buttonData[1][0])).toString() + "," + (new Integer(buttonData[1][1])).toString() + ","
                         /* SHOT FROM */ + (new Integer(checkBoxData[4])).toString() + "," + (new Integer(checkBoxData[5])).toString() + "," + (new Integer(checkBoxData[6])).toString() + "," + (new Integer(checkBoxData[7])).toString() + ","
                         /* CONTROL PANEL */ + (new Integer(checkBoxData[8])).toString() + "," + "" + "," + (new Integer(checkBoxData[9])).toString() + "," + "" + ","
